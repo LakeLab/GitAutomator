@@ -1,0 +1,16 @@
+{
+  "github_user_name": "",
+  "github_user_token": "",
+  "github_api_host": "",
+  "default_repository_name": "",
+  "default_assignee_names": [
+    "lakelab"
+  ],
+  "default_pr_template": "#### PR templete sample\n{message}",
+  "default_reviewer_names": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ]
+}
