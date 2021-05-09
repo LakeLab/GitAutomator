@@ -54,7 +54,6 @@ print("""
 
 with open(resource_path("./environment.json")) as json_file:
     json_config = json.load(json_file)
-    REPO_PATH = json_config["repo_path"]
     GITHUB_USER_TOKEN = json_config["github_user_token"]
     GITHUB_USER_NAME = json_config["github_user_name"]
     GITHUB_API_HOST = json_config["github_api_host"]
