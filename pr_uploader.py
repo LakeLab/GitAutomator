@@ -1,9 +1,22 @@
 import json
+import os
+import sys
 from email.utils import parsedate_to_datetime
 import requests
 from github import Github
 
 MAX_RANGE_FOR_SEARCHING = 50
+
+
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 
 
 def find_root_commit_index_for_target_branch(target_commits, base_commits):
@@ -29,8 +42,17 @@ def make_pr_message(commit_message):
                 result = f"- [x] {message}"
     return result
 
+print("""
 
-with open("environment.json") as json_file:
+┏━━━┳━━━┓┏┓╋┏┳━━━┳┓╋╋┏━━━┳━━━┳━━━┳━━━┳━━━┓
+┃┏━┓┃┏━┓┃┃┃╋┃┃┏━┓┃┃╋╋┃┏━┓┃┏━┓┣┓┏┓┃┏━━┫┏━┓┃
+┃┗━┛┃┗━┛┃┃┃╋┃┃┗━┛┃┃╋╋┃┃╋┃┃┃╋┃┃┃┃┃┃┗━━┫┗━┛┃
+┃┏━━┫┏┓┏┛┃┃╋┃┃┏━━┫┃╋┏┫┃╋┃┃┗━┛┃┃┃┃┃┏━━┫┏┓┏┛
+┃┃╋╋┃┃┃┗┓┃┗━┛┃┃╋╋┃┗━┛┃┗━┛┃┏━┓┣┛┗┛┃┗━━┫┃┃┗┓
+┗┛╋╋┗┛┗━┛┗━━━┻┛╋╋┗━━━┻━━━┻┛╋┗┻━━━┻━━━┻┛┗━┛
+""")
+
+with open(resource_path("./environment.json")) as json_file:
     json_config = json.load(json_file)
     REPO_PATH = json_config["repo_path"]
     GITHUB_USER_TOKEN = json_config["github_user_token"]
