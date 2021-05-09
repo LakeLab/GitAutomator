@@ -12,7 +12,17 @@ Automate your git flow!
 * Download zip from [releases](https://github.com/LakeLab/GitAutomator/releases)
 * Fill the context on [environment.json](environment.json) file
 * Execute pr_uploader!
+
+
 ---
-# Caution for pyinstaller
+# ETC
+
+#### Required permission scope list for pr_uploader.py on github_user_token
+* repo (all permissions)
+* admin:org 
+    * read:org 
+
+
+#### Caution for pyinstaller
 You need to make an executable file with pyinstaller as follow.\
 ```pyinstaller pr_uploader.py --add-data 'environment.json:.' --hidden-import=_cffi_backend```
